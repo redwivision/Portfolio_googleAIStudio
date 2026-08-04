@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lewi Kibru | Software Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- WELCOME PRELOADER SPLASH SCREEN -->
+<div id="welcome-splash" class="splash-screen">
+    <div class="splash-content">
+        <h2 class="splash-text">LEWI<span>.</span>KIBRU</h2>
+        <div class="splash-loader"></div>
+    </div>
+</div>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">LEWI<span id="secret-dot" class="secret-trigger-dot" title="Secret Vault Dot (Click 3x to unlatch vault)">.</span>KIBRU</div>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+<!-- HERO SECTION -->
+<section id="hero" class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+        <!-- Text Column -->
+        <div class="hero-text">
+            <h1>Hi, I am Lewi.<br>I build dynamic <span>Software Solutions</span></h1>
+            <p>I am a versatile Software Engineer specializing in adapting to any tech stack to build robust full-stack web platforms and seamless mobile ecosystems.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="cta-btn">View My Work</a>
+                <a href="https://github.com/redwivision" target="_blank" class="cta-btn secondary-btn">GitHub Profile</a>
+            </div>
+        </div>
+        
+        <!-- Profile Picture Column -->
+        <div class="hero-avatar-container">
+            <img src="image_175a269.png" alt="Lewi Kibru" class="hero-avatar">
+        </div>
+    </div>
+</section>
+
+    <!-- ABOUT & EDUCATION & SKILLS -->
+    <section id="about" class="reveal">
+        <div class="meta-grid">
+            <div>
+                <h2>Core Skills</h2>
+                <div class="skills-list" id="skills-container" style="margin-bottom: 2.5rem;">
+                    <!-- Loaded dynamically via script.js -->
+                </div>
+
+                <h2>Hobbies</h2>
+                <div class="skills-list" id="hobbies-container">
+                    <!-- Loaded dynamically via script.js -->
+                </div>
+            </div>
+            <div>
+                <h2>Education</h2>
+                <div class="edu-card">
+                    <h3>High School Student</h3>
+                    <p>Actively learning, building, and breaking production systems independently. Proved engineering capabilities through self-driven real-world deployments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="reveal">
+        <h2>Selected Projects</h2>
+        <div class="project-filter-bar" id="project-filter-bar">
+            <!-- Dynamically populated via script.js -->
+        </div>
+        <div class="project-grid" id="projects-container">
+            <!-- Loaded dynamically via script.js -->
+        </div>
+        <div class="pagination-container">
+            <button id="load-more-btn" class="cta-btn secondary-btn">Show More Projects</button>
+        </div>
+    </section>
+
+<!-- FOOTER / CONTACT -->
+<section id="contact" style="padding-bottom: 8rem;" class="reveal">
+    <h2>Get In Touch</h2>
+    <p class="contact-text">Have an interesting problem to solve or a platform to build? Drop a message below.</p>
+    
+    <!-- LOCAL FORM INTERFACE -->
+    <form id="contact-form" class="contact-form-layout">
+        <div class="form-row">
+            <!-- Ensure IDs are form-name and form-email -->
+            <input type="text" id="form-name" placeholder="Your Name" required class="form-input">
+            <input type="email" id="form-email" placeholder="Your Email Address" required class="form-input">
+        </div>
+        <!-- CHANGED ID: Updated from form-msg to form-body to match backend req.body.body -->
+        <textarea id="form-body" placeholder="Project details or message..." required class="form-input form-textarea"></textarea>
+        
+        <div class="contact-methods">
+            <button type="submit" id="form-submit-btn" class="cta-btn">Send Message</button>
+            <a href="tel:0968099678678" class="phone-link">📞 0968099678678</a>
+        </div>
+    </form>
+</section>
+
+
+    <footer>
+        <p>&copy; 2026 Lewi Kibru. Built with HTML, CSS, and JS.</p>
+    </footer>
+
+    <!-- SPY VAULT ACCESS MODAL -->
+    <div id="spy-vault-modal" class="spy-modal-overlay">
+        <div class="spy-modal-container">
+            <!-- Movie-like Secret Book & Door Latch Graphic -->
+            <div class="spy-vault-door-graphic">
+                <div class="secret-book-shelf">
+                    <div class="secret-book-item book-tilted">📘</div>
+                    <div class="secret-book-item book-gold book-pulling" id="animated-book">📖</div>
+                    <div class="secret-book-item book-tilted">📙</div>
+                </div>
+                <div class="vault-latch-gear">⚙️</div>
+            </div>
+
+            <div class="spy-modal-header">
+                <div class="spy-badge">CLASSIFIED CLEARANCE LEVEL-5</div>
+                <h2 class="spy-title">INSA CYBER COMMAND // VAULT ACCESS</h2>
+                <p class="spy-subtitle">Secret door unlatched! Enter authorization keycode to enter Admin Command Center.</p>
+            </div>
+
+            <form id="spy-passcode-form" class="spy-form">
+                <div class="spy-input-wrapper">
+                    <span class="spy-input-icon">🔑</span>
+                    <input type="password" id="spy-token-input" placeholder="Enter Secret Token (MY_SECRET_PASSWORD)..." autocomplete="off" required>
+                    <button type="button" id="spy-toggle-vis" class="spy-vis-btn" title="Toggle visibility">👁️</button>
+                </div>
+                
+                <div id="spy-status-msg" class="spy-status-msg"></div>
+
+                <div class="spy-btn-row">
+                    <button type="submit" id="spy-submit-btn" class="spy-btn primary-spy-btn">
+                        <span>🔓 VERIFY & ENTER VAULT</span>
+                    </button>
+                    <button type="button" id="spy-cancel-btn" class="spy-btn cancel-spy-btn">
+                        <span>✕ CANCEL / ABORT</span>
+                    </button>
+                </div>
+            </form>
+            <div class="spy-footer-hint">
+                <span class="hint-key">PRO TIP:</span> Click dot 3x in LEWI.KIBRU logo, draw 'L' on canvas, or press <code>Ctrl+Shift+A</code> to unlatch vault.
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

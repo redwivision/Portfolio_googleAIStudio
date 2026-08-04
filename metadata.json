@@ -1,0 +1,6 @@
+{
+  "name": "Lewi Kibru Portfolio",
+  "description": "Software engineer portfolio application with projects, profile, contact form, and admin management dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

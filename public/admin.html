@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1, h2 { border-bottom: 2px solid #334155; padding-bottom: 0.5rem; }
+        .section {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 4px;
+            color: white;
+            box-sizing: border-box;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover { opacity: 0.9; }
+        .btn-danger { background: var(--danger); }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card h3 { margin-top: 0; color: var(--primary); }
+        .card p { color: var(--text-muted); font-size: 0.9rem; }
+        .card-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .card-actions .btn { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+        .badge {
+            background: #334155;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.5rem; border-bottom: 2px solid #334155; padding-bottom: 0.5rem;">
+        <h1 style="border:none; padding:0; margin:0;">Portfolio Administration Dashboard</h1>
+        <a href="/" class="btn" style="background:#475569; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">← Back to Portfolio</a>
+    </div>
+
+    <!-- GLOBAL AUTH HEADER GATEWAY -->
+    <div class="section">
+        <h2>Authentication Token</h2>
+        <div class="form-group">
+            <label for="admin-token">Current Active Secret Token (x-admin-token)</label>
+            <input type="password" id="admin-token" placeholder="Enter active secret token (default: supersecureadminpass123)">
+        </div>
+        <button id="load-secure-btn" class="btn">Load & Sync All Data</button>
+    </div>
+
+    <!-- CHANGE SECRET TOKEN SECTION -->
+    <div class="section">
+        <h2>Security Settings — Change Admin Passcode</h2>
+        <form id="change-token-form">
+            <div class="form-group">
+                <label for="new-token-input">New Admin Secret Token</label>
+                <input type="password" id="new-token-input" required minlength="4" placeholder="Enter new secret token (minimum 4 characters)">
+            </div>
+            <div class="form-group">
+                <label for="confirm-token-input">Confirm New Secret Token</label>
+                <input type="password" id="confirm-token-input" required minlength="4" placeholder="Re-enter new secret token">
+            </div>
+            <button type="submit" class="btn" style="background: linear-gradient(135deg, #0284c7, #0369a1);">🔑 Update Secret Admin Passcode</button>
+        </form>
+    </div>
+
+    <!-- PROFILE SETTINGS -->
+    <div class="section">
+        <h2>Profile Settings</h2>
+        <form id="profile-form">
+            <div class="form-group">
+                <label for="hero-title">Hero Title (HTML Supported)</label>
+                <input type="text" id="hero-title" required placeholder="Hi, I am Lewi.<br>I build dynamic <span>Software Solutions</span>">
+            </div>
+            <div class="form-group">
+                <label for="hero-bio">Hero Bio</label>
+                <textarea id="hero-bio" rows="3" required placeholder="Write something about yourself..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="contact-phone">Contact Phone</label>
+                <input type="text" id="contact-phone" required placeholder="0968099678678">
+            </div>
+            <div class="form-group">
+                <label for="profile-skills">Skills (comma-separated)</label>
+                <input type="text" id="profile-skills" required placeholder="Full-Stack, Python, HTML/CSS">
+            </div>
+            <div class="form-group">
+                <label for="profile-hobbies">Hobbies (comma-separated)</label>
+                <input type="text" id="profile-hobbies" required placeholder="Chess ♟️, Basketball 🏀">
+            </div>
+            <div class="form-group">
+                <label for="profile-pic">Profile Picture (upload new image to update DB)</label>
+                <input type="file" id="profile-pic" accept="image/*">
+            </div>
+            <div class="pic-preview-container" style="margin-top:10px; margin-bottom:15px;">
+                <label style="font-size:0.85rem; margin-bottom:5px;">Profile Picture Preview:</label>
+                <div style="display:flex; align-items:center; gap:15px; margin-top:5px;">
+                    <img id="profile-pic-preview" style="max-width:140px; max-height:140px; border-radius:12px; border:2px solid var(--primary); display:none; object-fit:cover;" />
+                    <button type="button" id="remove-pic-btn" class="btn btn-danger" style="display:none; font-size:0.85rem; padding:0.4rem 0.8rem;">Remove Custom Picture</button>
+                </div>
+            </div>
+            <button type="submit" class="btn">Save Profile Settings</button>
+        </form>
+    </div>
+
+    <!-- CREATE OR EDIT FORM LAYER -->
+    <div class="section">
+        <h2 id="form-title">Create New Project</h2>
+        <form id="project-form">
+            <!-- Hidden input to keep track if we are updating an existing ID -->
+            <input type="hidden" id="project-id" value="">
+            
+            <div class="form-group">
+                <label for="title">Project Title</label>
+                <input type="text" id="title" required placeholder="e.g., Jarvis AI Assistant">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" rows="3" required placeholder="Brief summary of what it does..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="link">Project Link (GitHub / Live Deployment)</label>
+                <input type="url" id="link" required placeholder="https://github.com...">
+            </div>
+            <div class="form-group">
+                <label for="project-tags">Tags (comma-separated)</label>
+                <input type="text" id="project-tags" placeholder="e.g., Python, Automation">
+            </div>
+            <button type="submit" id="submit-btn" class="btn">Save Project</button>
+            <button type="button" id="cancel-edit-btn" class="btn btn-danger" style="display: none;">Cancel Edit</button>
+        </form>
+    </div>
+
+    <!-- LIVE DATABASE SYNC LAYOUT -->
+    <div class="section">
+        <h2>Current Live Projects</h2>
+        <div id="admin-projects-grid" class="grid">
+            <p>Loading records from your local PostgreSQL backend...</p>
+        </div>
+    </div>
+
+    <!-- MESSAGES VIEWER -->
+    <div class="section">
+        <h2>Incoming Contact Messages</h2>
+        <div id="admin-messages-grid" class="grid">
+            <p>Enter your admin token and click "Load Secure Data" to view messages.</p>
+        </div>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
